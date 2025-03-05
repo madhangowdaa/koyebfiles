@@ -6,14 +6,14 @@ from pyrogram import Client
 from pyrogram.enums import ParseMode
 import sys
 from datetime import datetime
-from config import API_HASH, APP_ID, LOGGER, TG_BOT_TOKEN, TG_BOT_WORKERS, FORCE_SUB_CHANNEL, CHANNEL_ID, PORT
+from config import API_HASH, APP_ID, LOGGER, TG_BOT_TOKEN, TG_BOT_WORKERS, FORCE_SUB_CHANNEL, CHANNEL_ID,KEEP_ALIVE_URL, PORT
 from plugins import web_server
 from pyrogram import utils as pyroutils
 
 pyroutils.MIN_CHAT_ID = -999999999999
 pyroutils.MIN_CHANNEL_ID = -100999999999999
 
-KEEP_ALIVE_URL = f"http://localhost:{PORT}"  # Change this to your bot’s deployed URL if needed
+# KEEP_ALIVE_URL = f"http://localhost:{PORT}"  # Change this to your bot’s deployed URL if needed
 
 class Bot(Client):
     def __init__(self):
@@ -24,6 +24,7 @@ class Bot(Client):
             plugins={"root": "plugins"},
             workers=TG_BOT_WORKERS,
             bot_token=TG_BOT_TOKEN,
+            keep_alive=KEEP_ALIVE_URL
         )
         self.LOGGER = LOGGER
 
@@ -32,7 +33,7 @@ class Bot(Client):
         while True:
             try:
                 async with aiohttp.ClientSession() as session:
-                    async with session.get(KEEP_ALIVE_URL) as resp:
+                    async with session.get(keep_alive) as resp:
                         self.LOGGER(__name__).info(f"Keep-alive ping: {resp.status}")
             except Exception as e:
                 self.LOGGER(__name__).warning(f"Keep-alive failed: {e}")
