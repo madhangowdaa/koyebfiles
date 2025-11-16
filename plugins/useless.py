@@ -12,7 +12,7 @@ async def followus(bot: Bot, message: Message):
     reply_markup=InlineKeyboardMarkup(
                         [
                          [
-                          InlineKeyboardButton('🎬 𝑴𝒐𝒗𝒊𝒆𝒔 𝒈𝒓𝒐𝒖𝒑', url="t.me/+UfmaZyLntv41Yzg1"),
+                          InlineKeyboardButton('🎬 𝑴𝒐𝒗𝒊𝒆𝒔 𝒈𝒓𝒐𝒖𝒑', url="t.me/+BtIY_7IaFKgxYzQ1"),
                           InlineKeyboardButton('🥹 𝑼𝒑𝒅𝒂𝒕𝒆𝒔 𝑪𝒉𝒂𝒏𝒏𝒆𝒍', url="t.me/MoviezAddaKA")
                        ],[
                           InlineKeyboardButton("🧑‍💻 𝑩𝒐𝒕 𝑪𝒓𝒆𝒂𝒕𝒆𝒓", url="t.me/kmadminsbot")
